@@ -1,4 +1,4 @@
-﻿import java.util.*;
+import java.util.*;
 
 /**
  * This class implements multiple sort algorithms to be used with ints, chars, and Stings.
