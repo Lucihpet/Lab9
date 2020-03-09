@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 
 /**
  * This class implements multiple sort algorithms to be used with ints, chars, and Stings.
@@ -12,13 +13,13 @@ public class MyArrayList {
    
     // instance data
     protected int[] IntList;
-    protected char[] CharList;
+    protected Character[] CharList;
     protected String[] StringList;
     
      // constructor will build all 3 arrays here
     public MyArrayList() {
         this.IntList = new int[10];
-        this.CharList = new char[10];
+        this.CharList = new Character[10];
         this.StringList = new String[5];
         
         // fill all 3 arrays with data
@@ -67,7 +68,7 @@ public class MyArrayList {
         for (int i = 0; i < IntList.length - 1; i++) {
             for (int j = 0; j < IntList.length - i - 1; j++) {
                 if (IntList[j] > IntList[j + 1]) {
-                    swapInts(IntList, i);
+                    swapInts(IntList, j);
                 }
             }
         }
@@ -75,46 +76,84 @@ public class MyArrayList {
         
     
     public void CharBubbleSort() {
-       // Implement your sort, call a helper swap method 
-            
+        for (int i = 0; i < CharList.length - 1; i++) {
+            for (int j = 0; j < CharList.length - i - 1; j++) {
+                if (CharList[j].compareTo(CharList[j+1]) > 0) {
+                    swapChars(CharList, j);
+                }
+            }
+        }
     }
     
     public void stringBubbleSort() {
-       // Implement your sort, call a helper swap method 
+        for (int i = 0; i < StringList.length - 1; i++) {
+            for (int j = 0; j < StringList.length - i - 1; j++) {
+                if (StringList[j].compareTo(StringList[j+1]) > 0) {
+                    swapStrings(StringList, j);
+                }
+            }
+        }
     }
 
 
     public void swapInts(int[] intList, int j) {
         int temp = intList[j];
         intList[j] = intList[j+1];
-        intList[j+1] = intList[j];
+        intList[j+1] = temp;
     }
     
-    public void swapChars(char[] charList, int j) { 
-        // code for swapping chars 
+    public void swapChars(Character[] charList, int j) {
+        Character temp = CharList[j];
+        CharList[j] = CharList[j+1];
+        CharList[j+1] = temp;
     }
     
     public void swapStrings(String[] stringList, int j) { 
-        // code for swapping Strings 
+        String temp = StringList[j];
+        StringList[j] = StringList[j+1];
+        StringList[j+1] = temp;
     }
     
     //selection sort for ints
     public void selectionSort() {
-        // Implement your sort, call swapSelection(int[] intList, int i, int nextMin) 
+        int nextMin;
+
+        for (int i = 0; i < IntList.length - 1; i++) {
+            nextMin = i;
+            for (int j = i + 1; j < IntList.length; j++) {
+                if (IntList[j] < IntList[nextMin])
+                    nextMin = j;
+            }
+            if (nextMin != i)
+                swapSelection(IntList, i, nextMin);
+        }
     }
     
     //selection sort for Strings
     public void stringSelectionSort() {
-       // Implement your sort, call swapSelectionStrings(String[] StringList, int i)
-	   // and findSmallest(IntList, i, IntList.length) from your method
+        int nextMin;
+
+        for (int i = 0; i < StringList.length - 1; i++) {
+            nextMin = i;
+            for (int j = i + 1; j < StringList.length; j++) {
+                if (StringList[j].compareTo(StringList[nextMin]) < 0)
+                    nextMin = j;
+            }
+            if (nextMin != i)
+                swapSelectionStrings(StringList, i, nextMin);
+        }
     }
     
     public void swapSelection(int[] intList, int i, int nextMin) { 
-        // Your code here to swap int values
+        int temp = intList[i];
+        intList[i] = intList[nextMin];
+        intList[nextMin] = temp;
     }
     
-    public void swapSelectionStrings(String[] StringList, int i) { 
-         // Your code here to swap values
+    public void swapSelectionStrings(String[] stringList, int i, int nextMin) {
+         String temp = stringList[i];
+         stringList[i] = stringList[nextMin];
+         stringList[nextMin] = temp;
     }
     
     
