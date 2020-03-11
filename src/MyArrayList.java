@@ -9,7 +9,7 @@ import java.lang.*;
  * @version (CSSSKL 143)
  */
  
-public class MyArrayList {
+public class MyArrayList implements Comparable<MyArrayList> {
    
     // instance data
     protected int[] IntList;
@@ -43,24 +43,16 @@ public class MyArrayList {
     }
     
     public int compareTo(MyArrayList other) {
-        /*
-           // your code here
-                System.out.println("compareTo() is returning -1, array[0] < other[0]"); 
-              
-            }
-                                       
-            // your code here    
-              System.out.println("compareTo() is returning 1, array[0] > other[0]");
-              
-            }
-              
-            else {
-                System.out.println("compareTo() is returning 0, array[0] != other[0] ");
-                // return a value here
-            }
-
-        */
-    return -1;
+        if (this.IntList[0] < other.IntList[0]) {
+            System.out.println("compareTo() is returning -1, array[0] < other[0]");
+            return -1;
+        } else if (this.IntList[0] > other.IntList[0]) {
+            System.out.println("compareTo() is returning 1, array[0] > other[0]");
+            return 1;
+        } else {
+            System.out.println("compareTo() is returning 0, array[0] != other[0] ");
+            return 0;
+        }
     }
 
     
@@ -176,16 +168,13 @@ public class MyArrayList {
 		for(int i = 0; i < IntList.length - 1; i++) {
             //note -1 above since we’re dealing with neighbors (a, a+1)
             int current = IntList[i];
-            //int hole = i;
+            int hole = i;
             
-            while( i > 0 && IntList[i - 1] > current ) { //while “out of place”
-                  //slide data to the left moving the “hole” left
-
-				   // more code goes here
-
-
-            }  
-            
+            while(hole > 0 && IntList[hole - 1] > current ) { //while “out of place”
+                  IntList[hole] = IntList[hole - 1];
+                  hole--;
+            }
+            IntList[hole] = current;
         }  
     } 
 } 

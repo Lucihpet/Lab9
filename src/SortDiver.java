@@ -49,12 +49,19 @@ public class SortDiver {
       for(int i = 0; i < array.StringList.length; i++) {
          System.out.print(array.StringList[i] + "|");
       }
-       */
+
 
       // NOTE: You must comment out previous calls for int sort methods,
       //       at this point the arrays are already sorted!
       array.selectionSort();
       System.out.print("\n\nSorted int array using selectionSort(): \n" );
+      for(int i = 0; i < array.IntList.length; i++) {
+         System.out.print(array.IntList[i] + "|");
+      }
+       */
+
+      array.insertionSort();
+      System.out.print("\nSorted int array using insertionSort(): \n" );
       for(int i = 0; i < array.IntList.length; i++) {
          System.out.print(array.IntList[i] + "|");
       }
@@ -67,6 +74,7 @@ public class SortDiver {
          System.out.print(array.StringList[i] + "|");
       }
       System.out.println();
+
 
       // lets see what is in other object first
       System.out.println("\nOther object's IntList[] has: " );
